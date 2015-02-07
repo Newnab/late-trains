@@ -17,12 +17,13 @@ connect     = require('gulp-connect');
 del         = require('del');
 autoprefixer = require('gulp-autoprefixer');
 
-// gulp.task('connect', function() {
-//   connect.server({
-//     root: 'app',
-//     livereload: true
-//   });
-// });
+gulp.task('connect', function() {
+   connect.server({
+     root: 'app',
+     livereload: true,
+        port: 8888
+   });
+ });
 
 
 //compressing images & handle SVG files
@@ -49,9 +50,9 @@ gulp.task('scripts', function() {
                //compress :D
                .pipe(uglify())
                //where we will store our finalized, compressed script
-               .pipe(gulp.dest('app/scripts'));
+               .pipe(gulp.dest('app/scripts'))
                //notify LiveReload to refresh
-               //.pipe(connect.reload());
+               .pipe(connect.reload());
 });
 
 //compiling our Javascripts for deployment
@@ -150,7 +151,7 @@ gulp.task('clean', function() {
 //  startup the web server,
 //  start up livereload
 //  compress all scripts and SCSS files
-gulp.task('default', ['scripts', 'styles'], function() {
+gulp.task('default', ['connect', 'scripts', 'styles'], function() {
     //a list of watchers, so it will watch all of the following files waiting for changes
     gulp.watch('app/scripts/src/**', ['scripts']);
     gulp.watch('app/styles/scss/**', ['styles']);
