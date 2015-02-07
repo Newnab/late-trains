@@ -3,7 +3,7 @@ Late trains!
 
 It puts the "fun" in "The UK's dysfunctional rail system"
 
-* This project is NOT FINISHED. Feel free to contribute if you know React!
+* This project is NOT FINISHED. At the minute it doesn't really do anything. Feel free to contribute if you know React!
 
 The idea is: You bet points on your train being late. If it is late, you WIN!
 
