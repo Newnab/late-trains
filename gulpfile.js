@@ -42,13 +42,13 @@ gulp.task('images-deploy', function() {
 //compiling our Javascripts
 gulp.task('scripts', function() {
     //this is where our dev JS scripts are
-    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js'])
+    return gulp.src(['app/scripts/src/_includes/*.js', 'app/scripts/src/react-router.js', 'app/scripts/src/main.js'])
                 //this is the filename of the compressed version of our JS
                .pipe(concat('app.js'))
                //catch errors
                .on('error', gutil.log)
                //compress :D
-               .pipe(uglify())
+               .pipe(uglify().on('error', function(e) { console.log('\x07',e.message+ " - in " +e.fileName); return this.end(); }))
                //where we will store our finalized, compressed script
                .pipe(gulp.dest('app/scripts'))
                //notify LiveReload to refresh
