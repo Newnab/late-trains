@@ -87,3 +87,7 @@ input[type=submit] {
   margin: auto;
   border-radius: 5px;
   display: block; }
+  input[type=submit]:hover {
+    background: #ffffff;
+    color: black;
+    cursor: pointer; }
